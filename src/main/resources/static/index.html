@@ -55,7 +55,18 @@
 <script>
     async function fetchData() {
         try {
-            const response = await fetch('http://localhost:8080/info/recruiting');
+            let currentHost = window.location.hostname;
+            if (currentHost == 'localhost') {
+                currentHost = `${currentHost}:8080`
+            }
+            const response = await fetch(`http://${currentHost}/info/recruiting`, {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add any other headers as needed
+                },
+            });
             const data = await response.json();
             return data;
         } catch (error) {
