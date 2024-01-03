@@ -38,7 +38,7 @@ public class InfoController {
 
   @GetMapping("/recruiting")
   public ResponseEntity<?> recruiting() {
-    return ResponseEntity.ok(recruitingCalculator.listEligiblePlayers(COUNTRY_CODES));
+    return ResponseEntity.ok(recruitingCalculator.listEligiblePlayers(Set.of("PT")));
   }
 
   @GetMapping("/locations")
