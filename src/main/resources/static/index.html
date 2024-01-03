@@ -47,11 +47,9 @@
             <th>Name</th>
             <th>Town Hall Level</th>
             <th>Trophies</th>
-            <th>War Stars</th>
-            <th>Attack Wins</th>
-            <th>Defense Wins</th>
             <th>Clan</th>
-            <th>League</th>
+            <th>Player League</th>
+            <th>Clan League</th>
         </tr>
         </thead>
         <tbody id="playerData">
@@ -117,11 +115,9 @@
                         <td>${player.name || ''}</td>
                         <td>${player.townHallLevel || ''}</td>
                         <td>${player.trophies || ''}</td>
-                        <td>${player.warStars || ''}</td>
-                        <td>${player.attackWins || ''}</td>
-                        <td>${player.defenseWins || ''}</td>
                         <td>${player.clan ? player.clan.name || '' : ''}</td>
                         <td>${player.league ? player.league.name || '' : ''}</td>
+                        <td>${player.clan.warLeague ? player.clan.warLeague.name || '' : ''}</td>
                     `;
                     playerDataElement.appendChild(row);
                 });
