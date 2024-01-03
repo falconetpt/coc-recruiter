@@ -1,16 +1,28 @@
 package coc.recruiter.client;
 
+import coc.recruiter.model.Clan;
+import coc.recruiter.model.Locations;
+import coc.recruiter.model.Player;
+import coc.recruiter.model.Players;
 import lombok.SneakyThrows;
 
 import java.util.List;
 import java.util.Set;
 
 public interface CocClient {
-  Object getPlayerInfo(String tag);
+  Player getPlayerInfo(String tag);
 
-  Object getClansPerCountryCodes(Set<String> countries);
+  List<Clan> getClansPerCountryCodes(Set<String> countries);
 
-  Object getLocations();
+  @SneakyThrows
+  List<Clan> getClansPerCountryCodes(Set<String> countries,
+                                     int limit,
+                                     String before,
+                                     String after);
+
+  Players getClanMembers(String tag);
+
+  Locations getLocations();
 
   List<String> getLocationId(Set<String> countryCodes);
 }

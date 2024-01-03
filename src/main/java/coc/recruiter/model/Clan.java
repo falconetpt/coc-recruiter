@@ -11,7 +11,7 @@ public class Clan {
   private long warLosses;
   private int members;
 
-  private WarLeague warLeague;
+  private League warLeague;
 
   private ChatLanguage chatLanguage;
 
