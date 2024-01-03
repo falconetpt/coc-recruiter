@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class RecruitingCalculatorImpl implements RecruitingCalculator {
   private final CocClient cocClient;
   @Value("${coc.exclusion.town.hall.min}")
-  private final int minTownHallLevel;
+  private int minTownHallLevel;
 
   @Override
   public List<Player> listEligiblePlayers(Set<String> countryCodes) {
