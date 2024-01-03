@@ -79,6 +79,8 @@
                 loadingMessage.style.display = 'none';
                 table.style.display = 'table';
 
+                playerDataElement.innerHTML = ''; // Clear existing rows
+
                 jsonResponse.forEach(player => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
@@ -100,7 +102,11 @@
         }
     }
 
-    populateTable();
+    async function initialize() {
+        populateTable();
+    }
+
+    initialize();
 </script>
 
 </body>
