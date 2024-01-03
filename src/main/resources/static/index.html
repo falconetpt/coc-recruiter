@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player Information</title>
+
+    <!-- Bootstrap and DataTables stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
     <style>
         table {
             font-family: Arial, sans-serif;
@@ -33,24 +38,33 @@
 
 <div id="loadingMessage">Loading...</div>
 
-<table style="display: none;">
-    <thead>
-    <tr>
-        <th>Tag</th>
-        <th>Name</th>
-        <th>Town Hall Level</th>
-        <th>Trophies</th>
-        <th>War Stars</th>
-        <th>Attack Wins</th>
-        <th>Defense Wins</th>
-        <th>Clan</th>
-        <th>League</th>
-    </tr>
-    </thead>
-    <tbody id="playerData">
-    <!-- Data will be populated here using JavaScript -->
-    </tbody>
-</table>
+<!-- Add the 'table-responsive' class for small screens -->
+<div class="table-responsive">
+    <table id="playerTable" class="table table-striped table-bordered" style="display: none;">
+        <thead>
+        <tr>
+            <th>Tag</th>
+            <th>Name</th>
+            <th>Town Hall Level</th>
+            <th>Trophies</th>
+            <th>War Stars</th>
+            <th>Attack Wins</th>
+            <th>Defense Wins</th>
+            <th>Clan</th>
+            <th>League</th>
+        </tr>
+        </thead>
+        <tbody id="playerData">
+        <!-- Data will be populated here using JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap and DataTables JavaScript files -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 
 <script>
     async function fetchData() {
@@ -118,7 +132,13 @@
     }
 
     async function initialize() {
-        populateTable();
+        await populateTable();
+
+        // Initialize the DataTable
+        $('#playerTable').DataTable({
+            paging: false, // Disable pagination for one-page display
+            responsive: true, // Enable responsive mode for small screens
+        });
     }
 
     initialize();
