@@ -22,8 +22,8 @@ public class RecruitingCalculatorImpl implements RecruitingCalculator {
     return cocClient.getClansPerCountryCodes(countryCodes, 10, null, null)
         .parallelStream()
         .flatMap(c -> cocClient.getClanMembers(c.getTag()).getItems().stream())
-        .map(p -> cocClient.getPlayerInfo(p.tag))
         .filter(p -> p.townHallLevel >= minTownHallLevel)
+        .map(p -> cocClient.getPlayerInfo(p.tag))
         .collect(Collectors.toList());
   }
 }
