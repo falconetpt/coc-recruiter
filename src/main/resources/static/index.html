@@ -56,10 +56,13 @@
     async function fetchData() {
         try {
             let currentHost = window.location.hostname;
-            if (currentHost == 'localhost') {
-                currentHost = `${currentHost}:8080`
+            if (currentHost === 'localhost') {
+                currentHost = `http://${currentHost}:8080`
+            } else {
+                currentHost = `https://${currentHost}`
             }
-            const response = await fetch(`http://${currentHost}/info/recruiting`, {
+
+            const response = await fetch(`${currentHost}/info/recruiting`, {
                 method: 'GET',
                 mode: 'cors',
                 headers: {
