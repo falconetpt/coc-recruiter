@@ -45,11 +45,13 @@
         <tr>
             <th>Tag</th>
             <th>Name</th>
+            <th>Clan role</th>
             <th>Town Hall Level</th>
             <th>Trophies</th>
             <th>Clan</th>
             <th>Player League</th>
             <th>Clan League</th>
+            <th>Player Info</th>
         </tr>
         </thead>
         <tbody id="playerData">
@@ -110,14 +112,17 @@
 
                 jsonResponse.forEach(player => {
                     const row = document.createElement('tr');
+                    console.log(`https://clashspot.net/en/player/${player.tag.slice(1)}/view/home-village`)
                     row.innerHTML = `
                         <td>${player.tag}</td>
                         <td>${player.name || ''}</td>
+                        <td>${player.role || ''}</td>
                         <td>${player.townHallLevel || ''}</td>
                         <td>${player.trophies || ''}</td>
                         <td>${player.clan ? player.clan.name || '' : ''}</td>
                         <td>${player.league ? player.league.name || '' : ''}</td>
                         <td>${player.clan.warLeague ? player.clan.warLeague.name || '' : ''}</td>
+                        <td><a target="_blank" href="https://clashspot.net/en/player/${player.tag.slice(1)}/view/home-village">Link</a></td>
                     `;
                     playerDataElement.appendChild(row);
                 });
